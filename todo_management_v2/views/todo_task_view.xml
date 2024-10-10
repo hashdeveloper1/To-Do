@@ -9,6 +9,7 @@
                 <field name="assign_to_id"/>
                 <field name="due_date"/>
                 <field name="description"/>
+                <field name="active"/>
                 <field name="state" widget="badge" decoration-success="state == 'completed'" decoration-warning="state == 'in_progress'"/>
             </tree>
         </field>
@@ -38,10 +39,28 @@
                             <field name="assign_to_id"/>
                             <field name="due_date"/>
                         </group>
+                        <group>
+                            <field name="estimated_time"/>
+                            <field name="total_time"/>
+                            <field name="active"/>
+                        </group>
                     </group>
                     <group>
                          <field name="description"/>
                     </group>
+                    <notebook>
+                        <page string="Time Sheet">
+                            <field name="task_line_ids" widget="section_and_note_one2many">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="assign_to_id"/>
+                                    <field name="time"/>
+<!--                                    <field name="due_date"/>-->
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter" >
                    <field name="message_follower_ids"/>
