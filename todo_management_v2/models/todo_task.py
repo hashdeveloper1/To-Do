@@ -1,5 +1,7 @@
 from odoo import fields, models, api
 from odoo.exceptions import UserError, ValidationError
+from odoo.odoo.fields import Datetime, Date
+
 
 
 class TodoTask(models.Model):
@@ -16,7 +18,8 @@ class TodoTask(models.Model):
     state = fields.Selection([
         ('new', 'New'),
         ('in_progress', 'In Progress'),
-        ('completed', 'Completed')],
+        ('completed', 'Completed'),
+        ('closed', 'Closed')],
         default='new', tracking=1
     )
     # description = fields.Char(states={'completed': [('readonly', True)]})
@@ -25,6 +28,7 @@ class TodoTask(models.Model):
     total_time = fields.Float(compute="_compute_total_time", store=1)
     task_line_ids = fields.One2many('todo.task.lines', 'task_id')
     active = fields.Boolean(default=True)
+    is_late = fields.Boolean(default=False)
 
     def action_in_progress(self):
         for rec in self:
@@ -37,6 +41,10 @@ class TodoTask(models.Model):
     def _compute_task_name(self):
         for rec in self:
             rec.ref = 'Task ' + str(rec.id)
+
+    def action_closed(self):
+        for rec in self:
+            rec.state = 'closed'
 
     @api.depends('task_line_ids', 'task_line_ids.time')
     def _compute_total_time(self):
@@ -52,3 +60,12 @@ class TodoTask(models.Model):
         for rec in self:
             if rec.total_time > rec.estimated_time:
                 raise ValidationError('Total time Must to be < Estimated Time')
+
+    def check_expected_due_date(self):
+        todo_ids = self.search([])
+        for rec in todo_ids:
+            datetimev = fields.Datetime.now()
+            date = datetimev.date()
+            if rec.due_date < date:
+                rec.is_late = True
+            print("hello", date)
