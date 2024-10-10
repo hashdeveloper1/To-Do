@@ -1,5 +1,4 @@
 # To-Do
-Odoo Task Management Addon
 # Odoo Task Management Addon
 
 This addon enhances Odoo's project management capabilities by providing advanced features for task tracking, prioritization, and collaboration. Designed for teams of all sizes, it helps streamline workflows, improve task visibility, and boost productivity.
