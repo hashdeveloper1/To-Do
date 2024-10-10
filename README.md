@@ -16,11 +16,3 @@ This addon enhances Odoo's project management capabilities by providing advanced
 1. Download the addon.
 2. Place it in your Odoo addons directory.
 3. Update the apps list and install the addon via the Odoo interface.
-
-## Contributing
-
-Contributions are welcome! Please see the `CONTRIBUTING.md` for details on how to get started.
-
-## License
-
-This addon is licensed under the MIT License. See the `LICENSE` file for more information.
