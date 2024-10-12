@@ -39,6 +39,7 @@
                         <td><t t-esc="str(int(o.estimated_time)) + ' H'"/></td>
                     </tr>
                 </tbody>
+                
 <!--                <thead>-->
 <!--                    <th colspan="4">Additional Information</th>-->
 <!--                </thead>-->
