@@ -1,0 +1,90 @@
+<odoo>
+
+    <record id="todo_task_report" model="ir.actions.report" >
+       <field name="name">todo task report</field>
+       <field name="model">todo.task</field>
+       <field name="report_type">qweb-pdf</field>  <!--qweb-pdf or qweb-html  -->
+       <field name="binding_model_id" ref="model_todo_task"/>
+       <field name="binding_type">report</field>  <!-- this field have to type  [ report - [default] no write ]-->
+       <field name="report_name">todo_management_v2.report_style_template_line</field> <!-- this field take value = "addon_name.id"  this id for style template and this id must be uneiq-->
+       <!--       <field name="paperformat_id" ref="app_one.paperformat_custom_temp_line"></field>-->
+    </record>
+
+    <template id="report_style_template_line">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="todo_management_v2.report_lines_document"/>
+            </t>
+       </t>
+    </template>
+
+    <template id="report_lines_document">
+        <t t-call="web.external_layout">
+            <table class="table table-condensed" style="width:100%;font-family: 'Poppins', sans-serif;  border: 1px solid #FFF;">
+                <tbody style="font-size: 26px">
+                    <tr>
+                        <td style="width:27%; font-weight: bold;">Task : </td>
+                        <td><t t-esc="o.name"/></td>
+                    </tr>
+                    <tr>
+                        <td style="width:27; font-weight: bold;">Due Date : </td>
+                        <td><t t-esc="o.due_date"/></td>
+                    </tr>
+                    <tr>
+                        <td style="width:27; font-weight: bold;">Assign To : </td>
+                        <td><t t-esc="o.assign_to_id.name"/></td>
+                    </tr>
+                    <tr>
+                        <td style="width:27%; font-weight: bold;">Estimated Time : </td>
+                        <td><t t-esc="str(int(o.estimated_time)) + ' H'"/></td>
+                    </tr>
+                </tbody>
+<!--                <thead>-->
+<!--                    <th colspan="4">Additional Information</th>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    <td>Owner</td>-->
+<!--&lt;!&ndash;                    <td><t t-esc="o.owner_id.name"/></td>&ndash;&gt;-->
+<!--                    <td>Phone</td>-->
+<!--&lt;!&ndash;                    <td><t t-esc="o.owner_phone"/></td>&ndash;&gt;-->
+<!--                </tbody>`-->
+            </table>
+
+        </t>
+    </template>
+
+    <!-- ================================================== -->
+
+        <!-- <t t-call="web.external_layout"></t> -->
+        <!-- <t t-call="web.basic_layout"></t> -->
+
+    <!-- ================================================== -->
+
+        <!--    <template id="report_style_template">-->
+        <!--        <t t-call="web.html_container">-->
+        <!--            <t t-foreach="docs" t-as="doc">-->
+        <!--                <t t-call="sale.report_sale_order_document" t-lang="doc.partner_id.lang"/>-->
+        <!--            </t>-->
+        <!--        </t>-->
+        <!--    </template>-->
+
+    <!-- ================================================== -->
+        <!--    <record id="paperformat_custom_temp_line" model="report.paperformat">-->
+        <!--        <field name="name">Print Receipt</field>-->
+        <!--        <field name="default" eval="True"/>-->
+        <!--        <field name="format">custom</field>-->
+        <!--        <field name="page_height">100</field>-->
+        <!--        <field name="page_width">80</field>-->
+        <!--        <field name="orientation">Portrait</field>-->
+        <!--        <field name="margin_top">0</field>-->
+        <!--        <field name="margin_bottom">0</field>-->
+        <!--        <field name="margin_left">0</field>-->
+        <!--        <field name="margin_right">10</field>-->
+        <!--        <field name="header_line" eval="False"/>-->
+        <!--        <field name="header_spacing">3</field>-->
+        <!--        <field name="dpi">80</field>-->
+        <!--    </record>-->
+    <!-- ================================================== -->
+
+
+</odoo>

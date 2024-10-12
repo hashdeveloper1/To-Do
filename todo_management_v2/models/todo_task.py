@@ -3,7 +3,6 @@ from odoo.exceptions import UserError, ValidationError
 from odoo.odoo.fields import Datetime, Date
 
 
-
 class TodoTask(models.Model):
     _name = 'todo.task'
     _inherit = ['mail.thread', 'mail.activity.mixin']
