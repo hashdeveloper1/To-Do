@@ -39,7 +39,7 @@
                         <td><t t-esc="str(int(o.estimated_time)) + ' H'"/></td>
                     </tr>
                 </tbody>
-                
+
 <!--                <thead>-->
 <!--                    <th colspan="4">Additional Information</th>-->
 <!--                </thead>-->
@@ -50,7 +50,6 @@
 <!--&lt;!&ndash;                    <td><t t-esc="o.owner_phone"/></td>&ndash;&gt;-->
 <!--                </tbody>`-->
             </table>
-
         </t>
     </template>
 
