@@ -20,37 +20,65 @@
 
     <template id="report_lines_document">
         <t t-call="web.external_layout">
-            <table class="table table-condensed" style="width:100%;font-family: 'Poppins', sans-serif;  border: 1px solid #FFF;">
-                <tbody style="font-size: 26px">
+<!--            <style>-->
+<!--                table tr {-->
+<!--                      margin-bottom: 20px; /* Adjust the value to increase/decrease space */-->
+<!--                      padding-bottom: 10px; /* Optional: You can also add padding */-->
+<!--                    }-->
+<!--            </style>-->
+<table style="font-family: 'Poppins', sans-serif; border: 1px solid #fff; border-spacing: 20px 10px;">
+    <tbody style="font-size: 26px">
+        <tr width="100">
+            <td width="20" class="col-1" style="font-weight: bold; padding-bottom: 10px;">Task :</td>
+            <td width="80" class="col-3" style="text-align: start; padding-bottom: 10px;"><t t-esc="o.name"/></td>
+        </tr>
+        <tr width="100">
+            <td width="20" style="font-weight: bold; padding-bottom: 10px;">Due Date :</td>
+            <td width="80" style="text-align: start; padding-bottom: 10px;"><t t-esc="o.due_date"/></td>
+        </tr>
+        <tr width="100">
+            <td width="20" style="font-weight: bold; padding-bottom: 10px;">Assign To :</td>
+            <td width="80" style="text-align: start; padding-bottom: 10px;"><t t-esc="o.assign_to_id.name"/></td>
+        </tr>
+        <tr width="100">
+            <td width="20" style="font-weight: bold; padding-bottom: 10px;">Estimated Time :</td>
+            <td width="80" style="text-align: start; padding-bottom: 10px;"><t t-esc="str(int(o.estimated_time)) + ' H'"/></td>
+        </tr>
+
+        <!-- Add more margin/padding before the Description section -->
+        <tr colspan="4" style="width=100%; padding-top: 30px;">
+            <td colspan="4" style="font-weight: bold; padding-top: 30px;">Description :</td>
+        </tr>
+        <tr style="width=100%;" colspan="4">
+            <td colspan="4" style="padding-bottom: 10px;"><t t-esc="o.description"/></td>
+        </tr>
+    </tbody>
+</table>
+            <table style="border-spacing: 20px 10px;font-size: 26px;font-family: 'Poppins', sans-serif; border: 1px solid #000; border-spacing: 20px 10px; text-align: center;width:100%;padding:20px">
+                <thead>
                     <tr>
-                        <td style="width:27%; font-weight: bold;">Task : </td>
-                        <td><t t-esc="o.name"/></td>
+                        <th colspan="4">Timesheet</th>
                     </tr>
                     <tr>
-                        <td style="width:27; font-weight: bold;">Due Date : </td>
-                        <td><t t-esc="o.due_date"/></td>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Time</th>
                     </tr>
-                    <tr>
-                        <td style="width:27; font-weight: bold;">Assign To : </td>
-                        <td><t t-esc="o.assign_to_id.name"/></td>
-                    </tr>
-                    <tr>
-                        <td style="width:27%; font-weight: bold;">Estimated Time : </td>
-                        <td><t t-esc="str(int(o.estimated_time)) + ' H'"/></td>
-                    </tr>
-                    <br/>
-                    <br/>
-                    <tr><td style="font-weight: bold; font-size: 26px;">Description : </td></tr>
-                    <tr><td style="font-size: 26px;"><t t-esc="o.description"/></td></tr>
-                </tbody>
-            </table>
-            <table style="width:100%;font-family: 'Poppins', sans-serif;font-size: 26px; border: 1px solid #FFF;">
+                </thead>
                 <tbody>
-                    <tr><td style="font-weight: bold; font-size: 26px;">Description : </td></tr>
-                    <tr><td style="font-size: 26px;"><t t-esc="o.description"/></td></tr>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
                 </tbody>
+                <footer>
+                    <td colspan="3">Total Time</td>
+                    <td colspan="1">10 h</td>
+                </footer>
             </table>
-    </t>
+
+        </t>
     </template>
 
     <!-- ================================================== -->
