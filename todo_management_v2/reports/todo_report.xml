@@ -20,7 +20,7 @@
 
     <template id="report_lines_document">
         <t t-call="web.external_layout">
-            <div style="padding:40px;border:1px solid #000">
+            <div id="page" style="padding:40px;border:1px solid #000">
                 <style>
                     .table_th_td_black {
                       border: 2px solid black;
@@ -31,7 +31,7 @@
                       border-collapse: collapse;
                     }
                     .table_th_td_black th, td {
-                      padding: 5px;
+                      padding: 10px;
                     }
                 </style>
                 <table class="table_th_td_white" style="font-family: 'Poppins', sans-serif; border: 1px solid #fff;">
@@ -77,14 +77,18 @@
                     </tr>
                 </thead>
                 <tbody >
-                     <td>1</td>
-                     <td>1</td>
-                     <td>1</td>
-                     <td>1</td>
+                    <t t-foreach="o.task_line_ids" t-as="line">
+                        <tr>
+                            <td><t t-esc="1"/></td>
+                            <td><span t-field="line.state"/></td>
+                            <td><span t-field="line.name"/></td>
+                            <td><t t-esc="str(int(line.time))+' h'"/></td>
+                        </tr>
+                    </t>
                 </tbody>
                 <footer>
                     <td colspan="3">Total Time</td>
-                    <td colspan="1">10 h</td>
+                    <td colspan="1"><t t-esc="o.total_time"/></td>
                 </footer>
             </table>
             </div>
