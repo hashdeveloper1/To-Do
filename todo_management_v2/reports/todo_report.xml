@@ -80,7 +80,7 @@
                     <t t-foreach="o.task_line_ids" t-as="line">
                         <tr>
                             <td><t t-esc="1"/></td>
-                            <td><span t-field="line.state"/></td>
+                            <td><span t-field="line.date"/></td>
                             <td><span t-field="line.name"/></td>
                             <td><t t-esc="str(int(line.time))+' h'"/></td>
                         </tr>
