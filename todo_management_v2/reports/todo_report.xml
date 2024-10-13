@@ -1,0 +1,128 @@
+<odoo>
+
+    <record id="todo_task_report" model="ir.actions.report" >
+       <field name="name">todo task report</field>
+       <field name="model">todo.task</field>
+       <field name="report_type">qweb-pdf</field>  <!--qweb-pdf or qweb-html  -->
+       <field name="binding_model_id" ref="model_todo_task"/>
+       <field name="binding_type">report</field>  <!-- this field have to type  [ report - [default] no write ]-->
+       <field name="report_name">todo_management_v2.report_style_template_line</field> <!-- this field take value = "addon_name.id"  this id for style template and this id must be uneiq-->
+       <!--       <field name="paperformat_id" ref="app_one.paperformat_custom_temp_line"></field>-->
+    </record>
+
+    <template id="report_style_template_line">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="todo_management_v2.report_lines_document"/>
+            </t>
+       </t>
+    </template>
+
+    <template id="report_lines_document">
+        <t t-call="web.external_layout">
+            <div style="padding:40px;border:1px solid #000">
+                <style>
+                    .table_th_td_black {
+                      border: 2px solid black;
+                      border-collapse: collapse;
+                    }
+                    .table_th_td_white {
+                      border: 1px solid #FFF;
+                      border-collapse: collapse;
+                    }
+                    .table_th_td_black th, td {
+                      padding: 5px;
+                    }
+                </style>
+                <table class="table_th_td_white" style="font-family: 'Poppins', sans-serif; border: 1px solid #fff;">
+                    <tbody style="font-size: 26px;border: 1px solid #fff;">
+                        <tr width="100">
+                            <td width="20" class="col-1" style="font-weight: bold; padding-bottom: 10px;">Task :</td>
+                            <td width="80" class="col-3" style="text-align: start; padding-bottom: 10px;"><t t-esc="o.name"/></td>
+                        </tr>
+                        <tr width="100">
+                            <td width="20" style="font-weight: bold; padding-bottom: 10px;">Due Date :</td>
+                            <td width="80" style="text-align: start; padding-bottom: 10px;"><t t-esc="o.due_date"/></td>
+                        </tr>
+                        <tr width="100">
+                            <td width="20" style="font-weight: bold; padding-bottom: 10px;">Assign To :</td>
+                            <td width="80" style="text-align: start; padding-bottom: 10px;"><t t-esc="o.assign_to_id.name"/></td>
+                        </tr>
+                        <tr width="100">
+                            <td width="20" style="font-weight: bold; padding-bottom: 10px;">Estimated Time :</td>
+                            <td width="80" style="text-align: start; padding-bottom: 10px;"><t t-esc="str(int(o.estimated_time)) + ' H'"/></td>
+                        </tr>
+
+                        <!-- Add more margin/padding before the Description section -->
+                        <tr colspan="4" style="width=100%; padding-top: 30px;">
+                            <td colspan="4" style="font-weight: bold; padding-top: 30px;">Description :</td>
+                        </tr>
+                        <tr style="width=100%;" colspan="4">
+                            <td colspan="4" style="padding-bottom: 10px;"><t t-esc="o.description"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+               <br/>
+               <br/>
+                <table class="table_th_td_black" style="font-size: 26px;font-family: 'Poppins', sans-serif; border: 1px solid #000; border-spacing: 20px 10px; text-align: center;width:100%;">
+                <thead >
+                    <tr>
+                        <th colspan="4">Timesheet</th>
+                    </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody >
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                </tbody>
+                <footer>
+                    <td colspan="3">Total Time</td>
+                    <td colspan="1">10 h</td>
+                </footer>
+            </table>
+            </div>
+        </t>
+    </template>
+
+    <!-- ================================================== -->
+
+        <!-- <t t-call="web.external_layout"></t> -->
+        <!-- <t t-call="web.basic_layout"></t> -->
+
+    <!-- ================================================== -->
+
+        <!--    <template id="report_style_template">-->
+        <!--        <t t-call="web.html_container">-->
+        <!--            <t t-foreach="docs" t-as="doc">-->
+        <!--                <t t-call="sale.report_sale_order_document" t-lang="doc.partner_id.lang"/>-->
+        <!--            </t>-->
+        <!--        </t>-->
+        <!--    </template>-->
+
+    <!-- ================================================== -->
+        <!--    <record id="paperformat_custom_temp_line" model="report.paperformat">-->
+        <!--        <field name="name">Print Receipt</field>-->
+        <!--        <field name="default" eval="True"/>-->
+        <!--        <field name="format">custom</field>-->
+        <!--        <field name="page_height">100</field>-->
+        <!--        <field name="page_width">80</field>-->
+        <!--        <field name="orientation">Portrait</field>-->
+        <!--        <field name="margin_top">0</field>-->
+        <!--        <field name="margin_bottom">0</field>-->
+        <!--        <field name="margin_left">0</field>-->
+        <!--        <field name="margin_right">10</field>-->
+        <!--        <field name="header_line" eval="False"/>-->
+        <!--        <field name="header_spacing">3</field>-->
+        <!--        <field name="dpi">80</field>-->
+        <!--    </record>-->
+    <!-- ================================================== -->
+
+
+</odoo>
