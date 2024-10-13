@@ -20,7 +20,7 @@
 
     <template id="report_lines_document">
         <t t-call="web.external_layout">
-            <div style="padding:40px;border:1px solid #000">
+            <div id="page" style="padding:40px;border:1px solid #000">
                 <style>
                     .table_th_td_black {
                       border: 2px solid black;
