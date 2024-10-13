@@ -77,18 +77,18 @@
                     </tr>
                 </thead>
                 <tbody >
-                    <t t-foreach="o.property_line_ids" t-as="line">
+                    <t t-foreach="o.task_line_ids" t-as="line">
                         <tr>
-                            <td><span t-field="line.description"/></td>
-                            <td><span t-field="line.area"/></td>
-                            <td><span t-field="line.area"/></td>
-                            <td><span t-field="line.area"/></td>
+                            <td><t t-esc="1"/></td>
+                            <td><span t-field="line.state"/></td>
+                            <td><span t-field="line.name"/></td>
+                            <td><t t-esc="str(int(line.time))+' h'"/></td>
                         </tr>
                     </t>
                 </tbody>
                 <footer>
                     <td colspan="3">Total Time</td>
-                    <td colspan="1">10 h</td>
+                    <td colspan="1"><t t-esc="o.total_time"/></td>
                 </footer>
             </table>
             </div>
