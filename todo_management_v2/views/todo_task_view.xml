@@ -55,6 +55,7 @@
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="assign_to_id"/>
+                                    <field name="date"/>
                                     <field name="time"/>
 <!--                                    <field name="due_date"/>-->
                                     <field name="state"/>

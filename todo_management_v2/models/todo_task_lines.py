@@ -11,7 +11,7 @@ class TodoTaskLines(models.Model):
     task_id = fields.Many2one('todo.task')
     assign_to_id = fields.Many2one('res.partner', required=True, states={'completed': [('readonly', True)], 'in_progress': [('readonly', True)]}, tracking=1)
     time = fields.Float()
-    # due_date = fields.Date(required=True, states={'completed': [('readonly', True)], 'in_progress': [('readonly', True)]}, tracking=1)
+    date = fields.Date()
     state = fields.Selection([
         ('new', 'New'),
         ('in_progress', 'In Progress'),
